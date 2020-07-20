@@ -1,0 +1,36 @@
+{
+  "name": "my-car-dealer",
+  "version": "0.0.1",
+  "description": "It's a website to buy sell and trade your car(s) with other people.",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc -p ./",
+    "start": "nodemon ./dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sofian-Projects/My-Car-Dealer.git"
+  },
+  "keywords": [
+    "Cars",
+    "Trade",
+    "Sell",
+    "Buy",
+    "BMW",
+    "Porsche",
+    "Range",
+    "Rover."
+  ],
+  "author": "Sofian Saleh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sofian-Projects/My-Car-Dealer/issues"
+  },
+  "homepage": "https://github.com/Sofian-Projects/My-Car-Dealer#readme",
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
