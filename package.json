@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc -p ./",
-    "start": "nodemon ./dist/src/index.js"
+    "start": "nodemon ts-node ./src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,14 @@
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.16.0",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.0.14",
+    "jest": "^26.1.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }
