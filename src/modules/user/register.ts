@@ -21,18 +21,16 @@ export class RegisterResolver {
     //   ! hash password
     const hashedPassword = await hashPassword(password);
 
-    const user = await User.insert({
+    const user = await User.create({
       firstName,
       lastName,
       username,
       email,
       password: hashedPassword,
       dateOfBirth,
-    });
+    }).save();
     console.log(user);
-    const users = await User.find();
-    console.log(users);
 
-    return users[0];
+    return user;
   }
 }
