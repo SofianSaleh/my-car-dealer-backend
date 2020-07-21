@@ -18,25 +18,5 @@
       "migrationsDir": "src/db/migration",
       "subscribersDir": "src/db/subscriber"
     }
-  },
-  {
-    "name": "test",
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "123456789",
-    "database": "my-car-dealer-test",
-    "synchronize": true,
-    "logging": false,
-    "dropSchema": true,
-    "entities": ["src/db/entity/**/*.*"],
-    "migrations": ["src/db/migration/**/*.*"],
-    "subscribers": ["src/db/subscriber/**/*.*"],
-    "cli": {
-      "entitiesDir": "src/db/entity",
-      "migrationsDir": "src/db/migration",
-      "subscribersDir": "src/db/subscriber"
-    }
   }
 ]
