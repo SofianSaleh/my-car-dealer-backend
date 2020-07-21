@@ -4,24 +4,23 @@ import { ApolloServer } from "apollo-server-express";
 import * as Express from "express";
 
 // import chalk from "chalk";
-import { Resolver, Query, buildSchema } from "type-graphql";
-import { createConnection } from "typeorm";
 
-@Resolver()
-class HelloWorld {
-  @Query(() => String)
-  async helloWorld() {
-    return `Hello `;
-  }
-}
+import { createConnection } from "typeorm";
+import { buildSchema } from "type-graphql";
+import { RegisterResolver } from "./modules/user/register";
 
 const PORT = process.env.PORT || 8000;
 
 const main = async () => {
-  await createConnection();
+  try {
+    await createConnection();
+  } catch (e) {
+    console.log(e.message);
+    throw e;
+  }
 
   const schema = await buildSchema({
-    resolvers: [HelloWorld],
+    resolvers: [RegisterResolver],
   });
 
   const apolloServer = new ApolloServer({ schema });

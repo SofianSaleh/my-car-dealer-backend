@@ -21,5 +21,5 @@ export class User extends BaseEntity {
   //   is_valid: boolean;
 
   @Column()
-  date_of_birth: Date;
+  dateOfBirth: Date;
 }
