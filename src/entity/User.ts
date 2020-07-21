@@ -1,18 +1,25 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column("text", { nullable: true })
+  firstName: string;
 
-    @Column()
-    firstName: string;
+  @Column("text", { nullable: true })
+  lastName: string;
 
-    @Column()
-    lastName: string;
+  @Column("text", { unique: true })
+  email: string;
 
-    @Column()
-    age: number;
+  @Column()
+  password: string;
 
+  //   @Column("boolean", {default: false })
+  //   is_valid: boolean;
+
+  @Column()
+  date_of_birth: Date;
 }

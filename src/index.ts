@@ -1,21 +1,37 @@
 import "reflect-metadata";
-import {createConnection} from "typeorm";
-import {User} from "./entity/User";
 
-createConnection().then(async connection => {
+import { ApolloServer } from "apollo-server-express";
+import * as Express from "express";
 
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
+// import chalk from "chalk";
+import { Resolver, Query, buildSchema } from "type-graphql";
+import { createConnection } from "typeorm";
 
-    console.log("Loading users from the database...");
-    const users = await connection.manager.find(User);
-    console.log("Loaded users: ", users);
+@Resolver()
+class HelloWorld {
+  @Query(() => String)
+  async helloWorld() {
+    return `Hello `;
+  }
+}
 
-    console.log("Here you can setup and run express/koa/any other framework.");
+const PORT = process.env.PORT || 8000;
 
-}).catch(error => console.log(error));
+const main = async () => {
+  await createConnection();
+
+  const schema = await buildSchema({
+    resolvers: [HelloWorld],
+  });
+
+  const apolloServer = new ApolloServer({ schema });
+  const app = Express();
+
+  apolloServer.applyMiddleware({ app });
+
+  app.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}/graphql`);
+  });
+};
+
+main();
