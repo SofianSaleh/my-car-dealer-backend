@@ -1,6 +1,7 @@
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { hashPassword } from "../../services/hash";
 import { User } from "../../db/entity/User";
+import { RegisterInput } from "./register/RegisterInput";
 
 @Resolver()
 export class RegisterResolver {
@@ -11,12 +12,15 @@ export class RegisterResolver {
 
   @Mutation(() => User)
   async register(
-    @Arg("firstName") firstName: string,
-    @Arg("lastName") lastName: string,
-    @Arg("username") username: string,
-    @Arg("email") email: string,
-    @Arg("password") password: string,
-    @Arg("dateOfBirth") dateOfBirth: string
+    @Arg("data")
+    {
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      dateOfBirth,
+    }: RegisterInput
   ): Promise<User> {
     //   ! hash password
     const hashedPassword = await hashPassword(password);
