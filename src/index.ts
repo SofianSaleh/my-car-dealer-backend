@@ -4,13 +4,14 @@ import cors from "cors";
 
 import { ApolloServer } from "apollo-server-express";
 import Express from "express";
+import cookieParser from "cookie-parser";
 
 // import chalk from "chalk";
 
 import { createConnection } from "typeorm";
 import { buildSchema } from "type-graphql";
 import { RegisterResolver } from "./modules/user/register";
-import cookieParser from "cookie-parser";
+import { LoginResolver } from "./modules/user/Login";
 
 const PORT = process.env.PORT || 8000;
 
@@ -34,7 +35,7 @@ const main = async () => {
   }
 
   const schema = await buildSchema({
-    resolvers: [RegisterResolver],
+    resolvers: [RegisterResolver, LoginResolver],
   });
 
   const apolloServer = new ApolloServer({
