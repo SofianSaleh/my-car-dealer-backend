@@ -36,12 +36,17 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/cors": "^2.8.6",
     "apollo-server-express": "^2.16.0",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.12.2",
+    "connect-redis": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
     "graphql-tools": "^6.0.14",
+    "ioredis": "^4.17.3",
     "jest": "^26.1.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.3.0",
