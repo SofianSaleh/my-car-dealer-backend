@@ -1,5 +1,7 @@
 import "reflect-metadata";
 
+import cors from "cors";
+
 import { ApolloServer } from "apollo-server-express";
 import Express from "express";
 
@@ -8,10 +10,22 @@ import Express from "express";
 import { createConnection } from "typeorm";
 import { buildSchema } from "type-graphql";
 import { RegisterResolver } from "./modules/user/register";
+import cookieParser from "cookie-parser";
 
 const PORT = process.env.PORT || 8000;
 
 const main = async () => {
+  const app = Express();
+
+  app.use(
+    cors({
+      credentials: true,
+      origin: "http://localhost:3000",
+    })
+  );
+
+  app.use(cookieParser());
+
   try {
     await createConnection();
   } catch (e) {
@@ -25,9 +39,9 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema,
+    context: (req: any, res: any) => ({ req, res }),
     // formatError: ArgumentValidationError,
   });
-  const app = Express();
 
   apolloServer.applyMiddleware({ app });
 
