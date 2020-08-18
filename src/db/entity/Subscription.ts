@@ -16,7 +16,7 @@ export enum SubscriptionTypes {
 
 @ObjectType()
 @Entity()
-export class Image extends BaseEntity {
+export class Subscription extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn('uuid')
   id: string;
