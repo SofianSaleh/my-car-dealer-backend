@@ -31,7 +31,7 @@ export class Car_Type extends BaseEntity {
     enum: CarTypes,
     default: CarTypes.Sedan,
   })
-  role: CarTypes;
+  type: CarTypes;
 
   @Field()
   @Column('text', { nullable: true })
