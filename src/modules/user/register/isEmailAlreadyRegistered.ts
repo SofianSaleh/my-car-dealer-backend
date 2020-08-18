@@ -3,9 +3,9 @@ import {
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
-} from "class-validator";
+} from 'class-validator';
 
-import { User } from "../../../db/entity/User";
+import { User } from '../../../db/entity/User';
 
 @ValidatorConstraint({ async: true })
 export class IsEmailAlreadyExistConstraint

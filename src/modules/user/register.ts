@@ -1,7 +1,7 @@
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
-import { hashPassword } from "../../services/hash";
-import { User } from "../../db/entity/User";
-import { RegisterInput } from "./register/RegisterInput";
+import { Resolver, Query, Mutation, Arg } from 'type-graphql';
+import { hashPassword } from '../../services/hash';
+import { User } from '../../db/entity/User';
+import { RegisterInput } from './register/RegisterInput';
 
 @Resolver()
 export class RegisterResolver {
@@ -12,7 +12,7 @@ export class RegisterResolver {
 
   @Mutation(() => User)
   async register(
-    @Arg("data")
+    @Arg('data')
     {
       firstName,
       lastName,
