@@ -21,10 +21,10 @@ export class User_Stats extends BaseEntity {
   user_id: User;
 
   @Field()
-  @Column({ type: 'integer', nullable: true, default: 0 })
+  @Column({ type: 'number', nullable: true, default: 0 })
   cars_sold: number;
 
   @Field()
-  @Column({ type: 'integer', nullable: true, default: 0 })
+  @Column({ type: 'number', nullable: true, default: 0 })
   cars_bought: number;
 }
