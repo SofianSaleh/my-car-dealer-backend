@@ -27,4 +27,12 @@ export class Offer extends BaseEntity {
   @Field()
   @Column({ type: 'bool', default: false })
   is_confirmed: boolean;
+
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
 }

@@ -24,6 +24,14 @@ export class Car extends BaseEntity {
   @Column('text', { nullable: true })
   production_end: string;
 
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
+
   //! More info required
   // @Field()
   // name(@Root() parent: Product): string {

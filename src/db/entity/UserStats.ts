@@ -30,17 +30,11 @@ export class User_Stats extends BaseEntity {
   @Column({ type: 'int', nullable: true, default: 0 })
   cars_bought: number;
 
-  @CreateDateColumn({
-    type: 'timestamp',
-    name: 'create_at',
-    default: () => 'LOCALTIMESTAMP',
-  })
-  create_at: string;
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
 
-  @UpdateDateColumn({
-    type: 'timestamp',
-    name: 'update_at',
-    default: () => 'LOCALTIMESTAMP',
-  })
-  update_at: string;
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
 }

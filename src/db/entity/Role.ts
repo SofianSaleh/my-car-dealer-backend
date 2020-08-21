@@ -36,4 +36,12 @@ export class Subscription extends BaseEntity {
   @Field()
   @ManyToOne((_type) => User, (user) => user.id)
   user_id: User;
+
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
 }

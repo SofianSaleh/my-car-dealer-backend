@@ -1,4 +1,4 @@
-import { Length, Contains, IsEmail, MinLength } from 'class-validator';
+import { Length, IsEmail, MinLength } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 import { IsEmailAlreadyExist } from './isEmailAlreadyRegistered';
 
@@ -13,7 +13,6 @@ export class RegisterInput {
   lastName: string;
 
   @Field()
-  @Contains(' ')
   @Length(3, 75)
   username: string;
 

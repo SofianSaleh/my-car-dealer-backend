@@ -24,6 +24,13 @@ export class Product extends BaseEntity {
   @Column('text', { nullable: true })
   location: string;
 
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
   // @Field()
   // name(@Root() parent: Product): string {
   //   return `${parent.firstName} ${parent.lastName}`;

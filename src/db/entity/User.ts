@@ -4,6 +4,7 @@ import {
   Column,
   BaseEntity,
   CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { ObjectType, Field, ID, Root } from 'type-graphql';
 
@@ -36,6 +37,14 @@ export class User extends BaseEntity {
   @Field()
   @CreateDateColumn({ type: 'date' })
   dateOfBirth: string;
+
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
 
   @Field()
   name(@Root() parent: User): string {

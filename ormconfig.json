@@ -9,7 +9,7 @@
     "database": "my-car-dealer",
     "synchronize": true,
     "logging": true,
-    "dropSchema": false,
+    "dropSchema": true,
     "entities": ["src/db/entity/**/*.*"],
     "migrations": ["src/db/migration/**/*.*"],
     "subscribers": ["src/db/subscriber/**/*.*"],

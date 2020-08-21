@@ -18,4 +18,12 @@ export class Ad extends BaseEntity {
   @Field()
   @ManyToOne((_type) => Product, (product) => product.id)
   product_id: Product;
+
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
 }

@@ -8,7 +8,9 @@ import { User } from '../../db/entity/User';
 export class RegisterResolver {
   @Query(() => String)
   async helloWorld() {
-    return `Hello `;
+    const users = await User.find();
+    console.log(users);
+    return users;
   }
 
   @Mutation(() => User)

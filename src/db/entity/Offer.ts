@@ -28,4 +28,12 @@ export class Offer extends BaseEntity {
   @Field()
   @Column({ type: 'text' })
   money: string;
+
+  @Field()
+  @CreateDateColumn({ name: 'created_at' })
+  'created_at': Date;
+
+  @Field()
+  @UpdateDateColumn({ name: 'updated_at' })
+  'updated_at': Date;
 }
