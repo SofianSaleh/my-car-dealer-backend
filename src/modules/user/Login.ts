@@ -3,6 +3,7 @@ import { comparePassword } from '../../services/hash';
 import { User } from '../../db/entity/User';
 // import { RegisterInput } from "./register/RegisterInput";
 import { MyContext } from '../../types/MyContext';
+import { UserReturn } from '../../types/returns';
 import {
   createNormalToken,
   createRefreshToken,
@@ -10,12 +11,12 @@ import {
 
 @Resolver()
 export class LoginResolver {
-  @Mutation(() => User, { nullable: true })
+  @Mutation(() => UserReturn)
   async login(
     @Arg('email') email: string,
     @Arg('password') password: string,
     @Ctx() ctx: MyContext
-  ): Promise<User | null> {
+  ): Promise<UserReturn> {
     console.log(ctx);
     const user = await User.findOne({ where: { email } });
     if (!user) return null;
@@ -29,6 +30,6 @@ export class LoginResolver {
 
     ctx.res.cookie(`refresh-token`, refresh, { httpOnly: true });
 
-    return user;
+    return { user };
   }
 }
