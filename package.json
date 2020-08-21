@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.16.0",
+    "argon2": "^0.27.0",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.12.2",
     "connect-redis": "^5.0.0",

@@ -3,6 +3,7 @@ import { hashPassword } from '../../services/hash';
 
 import { RegisterInput } from './register/RegisterInput';
 import { User } from '../../db/entity/User';
+import { UserReturn } from '../../types/returns';
 
 @Resolver()
 export class RegisterResolver {
@@ -12,8 +13,7 @@ export class RegisterResolver {
     console.log(users);
     return users;
   }
-
-  @Mutation(() => User)
+  @Mutation(() => UserReturn)
   async register(
     @Arg('data')
     {
@@ -24,7 +24,8 @@ export class RegisterResolver {
       password,
       dateOfBirth,
     }: RegisterInput
-  ): Promise<User> {
+  ): Promise<UserReturn> {
+    console.log(RegisterInput);
     const hashedPassword = await hashPassword(password);
 
     const user = await User.create({
@@ -36,6 +37,6 @@ export class RegisterResolver {
       dateOfBirth,
     }).save();
 
-    return user;
+    return { user };
   }
 }

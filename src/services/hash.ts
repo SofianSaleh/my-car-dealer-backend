@@ -1,8 +1,8 @@
-import { compare, hash } from "bcryptjs";
-import { v4 } from "uuid";
+import argon from 'argon2';
+import { v4 } from 'uuid';
 
 export const hashPassword = async (password: string) => {
-  const hashedPassword = await hash(password, 12);
+  const hashedPassword = await argon.hash(password);
 
   return hashedPassword;
 };
@@ -11,7 +11,7 @@ export const comparePassword = async (
   hashedPassword: string,
   password: string
 ) => {
-  const isValid = await compare(password, hashedPassword);
+  const isValid = await argon.verify(hashedPassword, password);
 
   return isValid;
 };

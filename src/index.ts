@@ -12,6 +12,7 @@ import { createConnection } from 'typeorm';
 import { buildSchema } from 'type-graphql';
 import { RegisterResolver } from './modules/User/register';
 import { LoginResolver } from './modules/User/Login';
+import { validationErrorHandler } from './services/ErrorHandler';
 
 const PORT = process.env.PORT || 8000;
 
@@ -41,6 +42,9 @@ const main = async () => {
   const apolloServer = new ApolloServer({
     schema,
     context: (req: any, res: any) => ({ req, res }),
+    formatError: (err: any) => {
+      return validationErrorHandler(err);
+    },
   });
 
   apolloServer.applyMiddleware({ app });
