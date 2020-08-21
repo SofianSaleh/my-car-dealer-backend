@@ -4,6 +4,8 @@ import {
   BaseEntity,
   ManyToOne,
   Column,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
 
@@ -21,10 +23,24 @@ export class User_Stats extends BaseEntity {
   user_id: User;
 
   @Field()
-  @Column({ type: 'number', nullable: true, default: 0 })
+  @Column({ type: 'int', nullable: true, default: 0 })
   cars_sold: number;
 
   @Field()
-  @Column({ type: 'number', nullable: true, default: 0 })
+  @Column({ type: 'int', nullable: true, default: 0 })
   cars_bought: number;
+
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'create_at',
+    default: () => 'LOCALTIMESTAMP',
+  })
+  create_at: string;
+
+  @UpdateDateColumn({
+    type: 'timestamp',
+    name: 'update_at',
+    default: () => 'LOCALTIMESTAMP',
+  })
+  update_at: string;
 }

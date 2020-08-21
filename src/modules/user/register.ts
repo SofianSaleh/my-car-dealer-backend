@@ -1,7 +1,8 @@
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import { hashPassword } from '../../services/hash';
-import { User } from '../../db/entity/User';
+
 import { RegisterInput } from './register/RegisterInput';
+import { User } from '../../db/entity/User';
 
 @Resolver()
 export class RegisterResolver {
@@ -22,7 +23,6 @@ export class RegisterResolver {
       dateOfBirth,
     }: RegisterInput
   ): Promise<User> {
-    //   ! hash password
     const hashedPassword = await hashPassword(password);
 
     const user = await User.create({
@@ -33,7 +33,6 @@ export class RegisterResolver {
       password: hashedPassword,
       dateOfBirth,
     }).save();
-    console.log(user);
 
     return user;
   }

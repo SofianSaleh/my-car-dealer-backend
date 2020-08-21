@@ -1,9 +1,4 @@
-import {
-  Resolver,
-  Mutation,
-  Arg,
-  Ctx,
-} from 'src/modules/User/node_modules/type-graphql';
+import { Resolver, Mutation, Arg, Ctx } from 'type-graphql';
 import { comparePassword } from '../../services/hash';
 import { User } from '../../db/entity/User';
 // import { RegisterInput } from "./register/RegisterInput";
